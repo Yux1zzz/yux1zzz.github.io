@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Unity学习笔记 | Yux1的个人博客</title><meta name="author" content="Yux1"><meta name="copyright" content="Yux1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e5b8c3"><meta name="description" content="并不完全的Unity学习笔记~~  摘录自[Unity中文课堂 (u3d.cn)  -- Joker独游计划合集]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity学习笔记">
+<meta property="og:url" content="https://yux1zzz.github.io/2024/07/25/Unity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Yux1的个人博客">
+<meta property="og:description" content="并不完全的Unity学习笔记~~  摘录自[Unity中文课堂 (u3d.cn)  -- Joker独游计划合集]">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yux1zzz.github.io/img/avatar.png">
+<meta property="article:published_time" content="2024-07-24T17:45:39.000Z">
+<meta property="article:modified_time" content="2024-10-10T21:57:46.195Z">
+<meta property="article:author" content="Yux1">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="Unity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yux1zzz.github.io/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yux1zzz.github.io/2024/07/25/Unity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e5b8c3')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: Yux1","link":"链接: ","source":"来源: Yux1的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Unity学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-11 05:57:46'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/web_bg.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/web_bg.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Yux1的个人博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Unity学习笔记</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Unity学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-24T17:45:39.000Z" title="发表于 2024-07-25 01:45:39">2024-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-10T21:57:46.195Z" title="更新于 2024-10-11 05:57:46">2024-10-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Unity/">Unity</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Unity学习笔记"><a href="#Unity学习笔记" class="headerlink" title="Unity学习笔记"></a>Unity学习笔记</h1><p>并不完全的Unity学习笔记~~</p>
+<p>摘录自<a target="_blank" rel="noopener" href="https://learn.u3d.cn/bundle/Joker-indie-game">Unity中文课堂 (u3d.cn)  – Joker独游计划合集</a></p>
+<h2 id="Unity主要框架"><a href="#Unity主要框架" class="headerlink" title="Unity主要框架"></a>Unity主要框架</h2><h3 id="Scene场景"><a href="#Scene场景" class="headerlink" title="Scene场景"></a>Scene场景</h3><p>Scene记录游戏中各元素并显示，为.unity的配置文件。</p>
+<h3 id="GameObject游戏物体"><a href="#GameObject游戏物体" class="headerlink" title="GameObject游戏物体"></a>GameObject游戏物体</h3><p>场景中的一切都为游戏物体。</p>
+<p>游戏物体的编辑一般通过Hierarchy、Inspector面板。</p>
+<p>不同的组件赋予游戏对象不同的功能。</p>
+<h3 id="Component组件"><a href="#Component组件" class="headerlink" title="Component组件"></a>Component组件</h3><p>组件为一个或多个功能的容器。</p>
+<p>组件化设计有利于维护拓展，简化继承树。</p>
+<p>Unity中任务游戏物体都有Transform组件。</p>
+<h3 id="Project窗口"><a href="#Project窗口" class="headerlink" title="Project窗口"></a>Project窗口</h3><p>Project窗口是一个<strong>开发时使用</strong>的项目资源管理器，为文件夹结构。</p>
+<h3 id="Inspect窗口"><a href="#Inspect窗口" class="headerlink" title="Inspect窗口"></a>Inspect窗口</h3><p>可查看游戏物体的属性设置</p>
+<h2 id="GameObject"><a href="#GameObject" class="headerlink" title="GameObject"></a>GameObject</h2><p>任何物体身上都有一个gameObject属性，代表所在的GameObject。</p>
+<h3 id="主要属性"><a href="#主要属性" class="headerlink" title="主要属性"></a>主要属性</h3><ul>
+<li>name：名称</li>
+<li>tag：标签</li>
+<li>layer：层分类</li>
+</ul>
+<h3 id="主要行为"><a href="#主要行为" class="headerlink" title="主要行为"></a>主要行为</h3><ul>
+<li>SetActive：是否显示</li>
+<li>AddComponent：添加组件</li>
+<li>GetComponent：获取组件</li>
+<li>GetComponents：获取多个组件</li>
+<li>GetComponentInChildren：获取子物体上的组件</li>
+<li>GetComponentInParent：获取父物体上的组件</li>
+</ul>
+<h2 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h2><p>在Unity中生命周期指一个组件从创建到销般的所有阶段，这些阶段肯定要做一些事情，这些事情就是生命周期函数。注意：官方一般称为“事件函数”。</p>
+<h3 id="关键生命周期函数"><a href="#关键生命周期函数" class="headerlink" title="关键生命周期函数"></a>关键生命周期函数</h3><p>Awake(针对GameObject)：始终在任何 Start函救之前GameObject创建后调用此函数。</p>
+<p>OnEanble(针对自身)：在启用对象后立即调用此函数。</p>
+<p>Reset：调用 Reset 可以在脚本首次附加到对象时以及使用 <em>Reset</em> 命令时初始化脚本的属性。</p>
+<p>OnValidate：每当设置脚本的属性时都会调用 OnValidate，包括反序列化对象时。</p>
+<p>Start(针对自身)：仅当启用脚本实例后，才会在第一次帧更新之前调用 Start</p>
+<p>OnApplicationPause：在帧的结尾处调用此函数（在正常帧更新之间有效检测到暂停）。在调用OnApplicationPause之后，将发出一个额外帧，从而允许游戏显示图形来指示暂停状态。</p>
+<p>FixedUpdate：调用 FixedUpdate 的频度常常超过 Update。如果帧率很低，可以每帧调用该函数多次；如果帧率很高，可能在帧之间完全不调用该函数。在 FixedUpdate 之后将立即进行所有物理计算和更新。在 FixedUpdate 内应用运动计算时，无需将值乘以 Time.deltaTime。这是因为 FixedUpdate 的调用基于可靠的计时器（独立于帧率）。</p>
+<p>Update(针对自身)：每帧洞用一次 Update。这是用于帧更新的主要函数</p>
+<p>LateUpdate(针对自身)：在LateUpdate完成后执行一次</p>
+<p>OnDisable(针对自身)：被禁用或处于非活动状态时，调用此函数</p>
+<p>OnDestroy(针对GameObject)：对象存在的最后一帧完成所有顿更新之后，调用此函数(可能因为Destroy函教或在场景关闭时销数该对象)</p>
+<p>针对GameObject：指就算组件被禁用也能调用</p>
+<h2 id="Unity输入系统"><a href="#Unity输入系统" class="headerlink" title="Unity输入系统"></a>Unity输入系统</h2><h3 id="监听键盘输入"><a href="#监听键盘输入" class="headerlink" title="监听键盘输入"></a>监听键盘输入</h3><p>键盘的输入有三种状态：按下的瞬间、持续按下中、弹起的瞬间</p>
+<p>下方三个函数返回都是bool类型、参数都是KeyCode枚举类型</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input.GetkeyDown(KeyCode.A)</span><br><span class="line">Input.Getkey(KeyCode.A)</span><br><span class="line">Input.GetKeyUp(KeyCode.A)</span><br></pre></td></tr></table></figure>
+
+<h3 id="监听鼠标输入"><a href="#监听鼠标输入" class="headerlink" title="监听鼠标输入"></a>监听鼠标输入</h3><p>和键盘差不多，不过0是鼠标左键、1是鼠标右键、2是鼠标中键</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input.GetMouseButtonDown(<span class="number">0</span>);</span><br><span class="line">Input.GetMouseButton(<span class="number">0</span>);</span><br><span class="line">Input.GetMouseButtonUp(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="InputManager"><a href="#InputManager" class="headerlink" title="InputManager"></a>InputManager</h3><p>Unity提供了一种常见且方便的使用方式：</p>
+<p>大多游戏中键盘A和D，是控制玩家在水平方向上进行移动，这里提供一个函数：</p>
+<p>如果玩家按下A，函数的返回值会偏向-1</p>
+<p>如果玩家按下D，函数的返回值会偏向1</p>
+<p>如果玩家不按A和D，函数的返回值会偏向0</p>
+<p>为什么叫“偏向”，因为会缓动效果，比如按下A后，数值慢慢减到-1，如果不按，慢慢回到0，按下D，慢慢到D，刚好可以模拟出启动、惯性的效果</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input.GetAxis(<span class="string">&quot;Horizontal&quot;</span>);</span><br><span class="line">Input.GetAxisRaw(<span class="string">&quot;Horizontal&quot;</span>); <span class="comment">// 不进行缓动，只有三种可能 -1，0，1</span></span><br></pre></td></tr></table></figure>
+
+<p>“Horizontal”是在Project-&gt;InputManager中配置</p>
+<h2 id="Unity2D动画"><a href="#Unity2D动画" class="headerlink" title="Unity2D动画"></a>Unity2D动画</h2><h3 id="Animator：动画组件（组件）"><a href="#Animator：动画组件（组件）" class="headerlink" title="Animator：动画组件（组件）"></a>Animator：动画组件（组件）</h3><p>用来持有AnimatorController的组件，注意可以多个Aniamtor持有一份AnimatorController  </p>
+<h3 id="AnimatorController：动画控制器（文件）"><a href="#AnimatorController：动画控制器（文件）" class="headerlink" title="AnimatorController：动画控制器（文件）"></a>AnimatorController：动画控制器（文件）</h3><p>动画控制器相当于是一个配置文件，配置的是一个角色有那些动画，动画和动画之间如何跳转</p>
+<p>状态：当前角色处于的状态，状态会持有具体的AniamtionClip</p>
+<p>条件：动画之间的切换基于什么条件</p>
+<p>参数：条件基于参数来判断是否满足，满足则切换</p>
+<ul>
+<li>int、float、bool和代码中的类似</li>
+<li>Trigger：触发一次，bool相当于是一种状态，但是Trigger是一个一次性使用的条件</li>
+</ul>
+<p>Has Exit Time：即使条件满足也需要等待当前状态的播放完毕才能进行切换</p>
+<p>参数：提供给脚本去访问、修改的“值”，这些值变化则状态变化，则动画发生改变</p>
+<p>CrossFadeInFixedTime：此函数无视是否有条件（也就是不拉线也能强行切换动画状态）</p>
+<h3 id="AniamtionClip：动画片段（文件）"><a href="#AniamtionClip：动画片段（文件）" class="headerlink" title="AniamtionClip：动画片段（文件）"></a>AniamtionClip：动画片段（文件）</h3><p>动画片段，就是动画文件，记录了每一帧的信息，Unity内可以制作动画，但是从其他建模类软件导入的情况也比较多（尤其是3D动画）</p>
+<p>2D动画也分为帧动画和骨骼动画</p>
+<ol>
+<li><p>帧动画就是通过切换图片形成动画</p>
+</li>
+<li><p>而骨骼是通过旋转、缩放、移动关节点进行变化的动画</p>
+</li>
+</ol>
+<h3 id="动画事件"><a href="#动画事件" class="headerlink" title="动画事件"></a>动画事件</h3><p>1.在Animation窗口对AnimationClip添加事件</p>
+<p>2.选择Animator所在游戏物体的某个脚本函数（必须是公开方法）</p>
+<h2 id="常见组件"><a href="#常见组件" class="headerlink" title="常见组件"></a>常见组件</h2><h3 id="Transform组件"><a href="#Transform组件" class="headerlink" title="Transform组件"></a>Transform组件</h3><p>任何物体身上都有一个transform属性，代表所在的GameObject上的Transform组件。</p>
+<h2 id="2D物理系统"><a href="#2D物理系统" class="headerlink" title="2D物理系统"></a>2D物理系统</h2><h3 id="碰撞体"><a href="#碰撞体" class="headerlink" title="碰撞体"></a>碰撞体</h3><p>决定物理单位的形状，是矩形，还是圆形，或者说自定义的多边形</p>
+<h3 id="刚体"><a href="#刚体" class="headerlink" title="刚体"></a>刚体</h3><p>物理单位的物理特性，也就是定义物理单位怎样受到物理的控制，如重力等等</p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>碰撞事件：当两个物理单位相撞时会调用的逻辑</p>
+<p>触发事件：当两个物理单位其中一个碰撞体设置为触发器时调用的逻辑</p>
+<h4 id="主要属性-1"><a href="#主要属性-1" class="headerlink" title="主要属性"></a>主要属性</h4><p>position：坐标</p>
+<p>rotation：旋转 四元数格式</p>
+<p>eulerAngles：旋转 欧拉角格式</p>
+<p>localScale：缩放</p>
+<p>其中position、eulerAngles、localScale都可用 <em>Vector3三维向量</em> 类型表示</p>
+<p>localPosition、localRotation、localEulerAngles：是相对父物体的坐标与旋转</p>
+<p>parent：父物体的transform</p>
+<p>childCount：子物体的数量</p>
+<p>root：自身的根节点(父的父的父到最上层)</p>
+<h4 id="主要行为-1"><a href="#主要行为-1" class="headerlink" title="主要行为"></a>主要行为</h4><p>GetChild：获取第X个子物体</p>
+<p>SetParent：设置自身为某个游戏物体的子物体</p>
+<p>Find：查找子物体，参数是路径，填写方式类似文件夹”A&#x2F;B&#x2F;C”</p>
+<p>Translate(Vector3 translation, Spave relativeTo)：移动</p>
+<p>其中translation为位移的量，relativeTo指基于什么坐标空间移动（World：世界坐标，Self：自身朝向）</p>
+<h3 id="SpriteRender"><a href="#SpriteRender" class="headerlink" title="SpriteRender"></a>SpriteRender</h3><h4 id="Sprite"><a href="#Sprite" class="headerlink" title="Sprite"></a>Sprite</h4><p>Sprite  “精灵图”  一词首次作为图形术语出现，是在德州仪器的9918(A)视频显示处理器上。使用“精灵图”作为术语，是因为精灵图并不是帧缓冲中位图数据的一部分，而是“悬浮”于帧缓冲中数据之上，不影响其中数据，就像精灵飘在上面一样。^^  </p>
+<p>在Unity中：png&#x2F;jpg等常规图片，一般不在Unity中直接使用，而是转为Sprite</p>
+<p>SpriteRender为用来渲染Sprite的渲染器</p>
+<table>
+<thead>
+<tr>
+<th><em><strong>属性</strong></em></th>
+<th><em><strong>功能</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sprite</strong></td>
+<td>定义该组件应渲染的精灵纹理。单击右侧的小圆点可打开对象选择器窗口，然后从可用精灵资源列表中进行选择。</td>
+</tr>
+<tr>
+<td><strong>Color</strong></td>
+<td>定义精灵的顶点颜色，用于对精灵的图像进行着色或重新着色。使用拾色器设置渲染的精灵纹理的顶点颜色。请参阅此表下方的<a target="_blank" rel="noopener" href="https://docs.unity3d.com/cn/current/Manual/class-SpriteRenderer.html#color">颜色</a>部分以查看示例。</td>
+</tr>
+<tr>
+<td><strong>Flip</strong></td>
+<td>沿选定的轴翻转精灵纹理。这不会翻转游戏对象的变换位置。</td>
+</tr>
+<tr>
+<td><strong>Sorting Layer</strong></td>
+<td>设置精灵的<a target="_blank" rel="noopener" href="https://docs.unity3d.com/Manual/class-TagManager.html">排序图层 (Sorting Layer)</a>，此图层用于控制渲染期间的精灵优先级。从下拉框中选择现有的排序图层，或创建新的排序图层。</td>
+</tr>
+<tr>
+<td><strong>Order In Layer</strong></td>
+<td>设置精灵在其<a target="_blank" rel="noopener" href="https://docs.unity3d.com/Manual/class-TagManager.html">排序图层</a>中的渲染优先级。首先渲染编号较低的精灵，编号较高的精灵叠加在前者之上。</td>
+</tr>
+<tr>
+<td><strong>Sprite Sort Point</strong></td>
+<td>在计算精灵和摄像机之间的距离时，在精灵中心 (Center) 或其轴心点 (Pivot Point) 之间进行选择。</td>
+</tr>
+</tbody></table>
+<p>注：scale中x值改为相反数等于x轴翻转</p>
+<h2 id="音频系统"><a href="#音频系统" class="headerlink" title="音频系统"></a>音频系统</h2><h3 id="AudioClip"><a href="#AudioClip" class="headerlink" title="AudioClip"></a>AudioClip</h3><p>常见的音频格式Unity都支持，在Unity内都被包装为AudioClip类型</p>
+<h3 id="AudioListener"><a href="#AudioListener" class="headerlink" title="AudioListener"></a>AudioListener</h3><p>没有任何可以设置属性的，其代表音频的接受者，也就是听见声音的地方，因为声音是可以有空间感的，所以这个组件一般在相机上，这样声音结合画面符合玩家的体验。</p>
+<h3 id="AudioSource"><a href="#AudioSource" class="headerlink" title="AudioSource"></a>AudioSource</h3><p>音频源头，也就是发生声音的组件</p>
+<ul>
+<li>Audio Clip：要播放的音频文件</li>
+<li>Mute：是否静音</li>
+<li>Play On Awake：在启动时是否立刻播放，如果禁用则脚本中使用Play()函数进行播放</li>
+<li>Loop：是否循环播放</li>
+<li>Volume：音量</li>
+<li>Spatial Blend：3D引擎对声音的影响，如果0则是完全的2D音效，1则是3D音效，也就是声音是否具有空间感。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yux1zzz.github.io">Yux1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yux1zzz.github.io/2024/07/25/Unity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://yux1zzz.github.io/2024/07/25/Unity学习笔记/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yux1zzz.github.io" target="_blank">Yux1的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="post-meta__tags" href="/tags/Unity/">Unity</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/2024/07/30/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E7%99%BB%E7%A5%9E%E9%95%BF%E9%98%B6/" title="游戏设计登神长阶"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">游戏设计登神长阶</div></div></a><a class="next-post pull-right" href="/2024/07/19/Yux1sJigsaw/" title="Yux1sJigsaw"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Yux1sJigsaw</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a href="/2024/06/30/Java%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Java基础学习笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-30</div><div class="title">Java基础学习笔记</div></div></a><a href="/2024/06/23/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="MySQL学习笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-23</div><div class="title">MySQL学习笔记</div></div></a><a href="/2024/06/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" title="数据结构与算法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-23</div><div class="title">数据结构与算法</div></div></a><a href="/2024/10/11/GodotLetsGO/" title="GodotLetsGO"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-11</div><div class="title">GodotLetsGO</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yux1</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Unity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">Unity学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity%E4%B8%BB%E8%A6%81%E6%A1%86%E6%9E%B6"><span class="toc-number">1.1.</span> <span class="toc-text">Unity主要框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scene%E5%9C%BA%E6%99%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text">Scene场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GameObject%E6%B8%B8%E6%88%8F%E7%89%A9%E4%BD%93"><span class="toc-number">1.1.2.</span> <span class="toc-text">GameObject游戏物体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Component%E7%BB%84%E4%BB%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text">Component组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Project%E7%AA%97%E5%8F%A3"><span class="toc-number">1.1.4.</span> <span class="toc-text">Project窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inspect%E7%AA%97%E5%8F%A3"><span class="toc-number">1.1.5.</span> <span class="toc-text">Inspect窗口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GameObject"><span class="toc-number">1.2.</span> <span class="toc-text">GameObject</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text">主要属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E8%A1%8C%E4%B8%BA"><span class="toc-number">1.2.2.</span> <span class="toc-text">主要行为</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.3.</span> <span class="toc-text">组件的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">关键生命周期函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.4.</span> <span class="toc-text">Unity输入系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E5%90%AC%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5"><span class="toc-number">1.4.1.</span> <span class="toc-text">监听键盘输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E5%90%AC%E9%BC%A0%E6%A0%87%E8%BE%93%E5%85%A5"><span class="toc-number">1.4.2.</span> <span class="toc-text">监听鼠标输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InputManager"><span class="toc-number">1.4.3.</span> <span class="toc-text">InputManager</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity2D%E5%8A%A8%E7%94%BB"><span class="toc-number">1.5.</span> <span class="toc-text">Unity2D动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Animator%EF%BC%9A%E5%8A%A8%E7%94%BB%E7%BB%84%E4%BB%B6%EF%BC%88%E7%BB%84%E4%BB%B6%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">Animator：动画组件（组件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AnimatorController%EF%BC%9A%E5%8A%A8%E7%94%BB%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%88%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-number">1.5.2.</span> <span class="toc-text">AnimatorController：动画控制器（文件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AniamtionClip%EF%BC%9A%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%EF%BC%88%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-number">1.5.3.</span> <span class="toc-text">AniamtionClip：动画片段（文件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.5.4.</span> <span class="toc-text">动画事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%BB%84%E4%BB%B6"><span class="toc-number">1.6.</span> <span class="toc-text">常见组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Transform%E7%BB%84%E4%BB%B6"><span class="toc-number">1.6.1.</span> <span class="toc-text">Transform组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.7.</span> <span class="toc-text">2D物理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E4%BD%93"><span class="toc-number">1.7.1.</span> <span class="toc-text">碰撞体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9A%E4%BD%93"><span class="toc-number">1.7.2.</span> <span class="toc-text">刚体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.7.3.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%B1%9E%E6%80%A7-1"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">主要属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E8%A1%8C%E4%B8%BA-1"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">主要行为</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpriteRender"><span class="toc-number">1.7.4.</span> <span class="toc-text">SpriteRender</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sprite"><span class="toc-number">1.7.4.1.</span> <span class="toc-text">Sprite</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.8.</span> <span class="toc-text">音频系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AudioClip"><span class="toc-number">1.8.1.</span> <span class="toc-text">AudioClip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AudioListener"><span class="toc-number">1.8.2.</span> <span class="toc-text">AudioListener</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AudioSource"><span class="toc-number">1.8.3.</span> <span class="toc-text">AudioSource</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/11/GodotLetsGO/" title="GodotLetsGO">GodotLetsGO</a><time datetime="2024-10-10T22:28:17.000Z" title="发表于 2024-10-11 06:28:17">2024-10-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/30/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E7%99%BB%E7%A5%9E%E9%95%BF%E9%98%B6/" title="游戏设计登神长阶">游戏设计登神长阶</a><time datetime="2024-07-30T05:49:34.000Z" title="发表于 2024-07-30 13:49:34">2024-07-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/25/Unity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Unity学习笔记">Unity学习笔记</a><time datetime="2024-07-24T17:45:39.000Z" title="发表于 2024-07-25 01:45:39">2024-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/19/Yux1sJigsaw/" title="Yux1sJigsaw">Yux1sJigsaw</a><time datetime="2024-07-18T17:39:38.000Z" title="发表于 2024-07-19 01:39:38">2024-07-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/14/Yux1sCalculator/" title="Yux1sCalculator">Yux1sCalculator</a><time datetime="2024-07-14T08:18:36.000Z" title="发表于 2024-07-14 16:18:36">2024-07-14</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/web_bg.png);"><div id="footer-wrap"><div class="copyright">&copy;2024 By Yux1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">感谢观看~！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
